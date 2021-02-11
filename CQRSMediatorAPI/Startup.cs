@@ -1,3 +1,5 @@
+using CQRSMediatorAPI.Models;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +29,8 @@ namespace CQRSMediatorAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMediatR(typeof(Startup));
+
+            services.AddSingleton<FakeDataStore>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
